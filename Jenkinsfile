@@ -13,7 +13,8 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                git url: 'https://github.com/g0t4/jgsu-spring-petclinic.git', branch: 'main'
+                echo "${env.GIT_BRANCH}"
+                // git url: 'https://github.com/g0t4/jgsu-spring-petclinic.git', branch: 'main'
 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
