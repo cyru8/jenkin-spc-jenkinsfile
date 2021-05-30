@@ -14,6 +14,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 //git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                 echo "${env.GIT_BRANCH}"
+                sh "pwd"
                 // git url: 'https://github.com/g0t4/jgsu-spring-petclinic.git', branch: 'main'
 
                 // Run Maven on a Unix agent.
