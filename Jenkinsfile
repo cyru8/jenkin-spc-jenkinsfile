@@ -24,7 +24,8 @@ pipeline {
         }
         stage('Clean and Build the Pet Clinic App') {
             steps {
-                sh "./mvnw clean package"
+                // sh "./mvnw clean package"
+                sh "false" //true
             }
         // }    
                 // sh "./mvnw clean package"
