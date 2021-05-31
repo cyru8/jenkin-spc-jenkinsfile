@@ -24,8 +24,8 @@ pipeline {
         }
         stage('Clean and Build the Pet Clinic App') {
             steps {
-                // sh "./mvnw clean package"
-                sh "false" //true
+                sh "./mvnw clean package"
+                // sh "false" //true
             }
         // }    
                 // sh "./mvnw clean package"
@@ -35,10 +35,10 @@ pipeline {
             // }
 
             post {
-                // always {
-                //     junit '**/target/surefire-reports/TEST-*.xml'
-                //     archiveArtifacts 'target/*.jar'
-                // }
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
                 changed {
                     emailext subject: "Job \'${JOB_NAME}\' (${BUILD_NUMBER}) ${currentBuild.result}",
                     attachLog: true,
