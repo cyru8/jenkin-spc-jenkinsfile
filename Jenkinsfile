@@ -34,10 +34,10 @@ pipeline {
             // }
 
             post {
-                // always {
-                    // junit '**/target/surefire-reports/TEST-*.xml'
-                    // archiveArtifacts 'target/*.jar'
-                // }
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
                 changed {
                     emailext subject: "Job \'${JOB_NAME}\' (${BUILD_NUMBER}) ${currentBuild.result} is waiting for further verification or input",
                     attachLog: true,
