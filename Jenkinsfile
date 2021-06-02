@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    triggers { pollSCM('* * * * *') }
+    // triggers { pollSCM('* * * * *') }
     stages {
         stage('Verify Branch') {
             steps {
