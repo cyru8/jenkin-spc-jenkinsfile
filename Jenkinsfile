@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "${env.GIT_BRANCH}"
                 slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
-                sh "docker version"
+                // sh "docker version"
            }
         }
         //stage('Build') {
