@@ -32,11 +32,7 @@ pipeline {
                     body: "Please go to ${BUILD_URL} and verify the build",
                     to: 'test@jenkins',
                     recipientProviders: [upstreamDevelopers(), requestor()]
-                    // slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
                 }
-                // changed {
-                //     slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
-                // }
             }
         }
     }
