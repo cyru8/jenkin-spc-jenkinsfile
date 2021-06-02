@@ -8,6 +8,13 @@ pipeline {
     //}
 
     stages {
+        stage('Verify Branch') {
+            steps {
+                echo "${env.GIT_BRANCH}"
+                slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                sh "docker version"
+           }
+        }
         //stage('Build') {
         stage('checkout') {
             steps {
@@ -46,6 +53,7 @@ pipeline {
                     body: "Please go to ${BUILD_URL} and verify the build",
                     to: 'test@jenkins',
                     recipientProviders: [upstreamDevelopers(), requestor()]
+                    slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
                 }
             }
         }
