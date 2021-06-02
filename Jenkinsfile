@@ -34,6 +34,9 @@ pipeline {
                     recipientProviders: [upstreamDevelopers(), requestor()]
                     slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
                 }
+                changed {
+                    slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                }
             }
         }
     }
