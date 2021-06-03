@@ -19,6 +19,7 @@ pipeline {
             steps {
                 sh "./mvnw clean package"
                 slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                echo "deploy this app into a docker image for deployment."
             }
             post {
                 always {
