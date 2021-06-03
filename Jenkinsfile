@@ -15,7 +15,7 @@ pipeline {
                 sh "ls -al"
             }
         }
-        stage('Clean and Build the Pet Clinic App') {
+        stage('Clean and Build the Pet Clinic Java App') {
             steps {
                 sh "./mvnw clean package"
                 slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
