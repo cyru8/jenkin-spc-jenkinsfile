@@ -49,7 +49,7 @@ pipeline {
         //     }
             
         // }
-        stage("Push Image") {
+        stage("Build image with the Spring Pet Clinic App and Push the Image to Docker Registry") {
             steps {
                 echo "Workspace is $WORKSPACE"
                 dir("$WORKSPACE") {
