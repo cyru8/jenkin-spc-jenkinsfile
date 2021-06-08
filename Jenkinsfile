@@ -40,23 +40,38 @@ pipeline {
                 }
             }
         }
-        // stage('Package application into a docker image') {
-        //     steps {
-        //         sh(script: """
-        //         docker build -t oadetiba/spring-petclinic:2.3.1 .
-        //         docker images
-        //         """)
-        //     }
-            
-        // }
-        stage('build') {
+        stage('Package application into a docker image') {
             steps {
-                dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
-                docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
-                    dockerImage.push()
+                sh(script: """
+                docker build -t oadetiba/spring-petclinic:2.3.1 .
+                docker images
+                """)
+            }
+            
+        }
+        stage("Push Image") {
+            steps {
+                echo "Workspace is $WORKSPACE"
+                dir("$WORKSPACE") {
+                    script {
+                        docker.withRegistry('', 'dockerhubcreds') {
+                            def image = docker.build('oadetiba/spring-petclinic:2.3.1')
+                            echo "Please proceed to push the images: spring-petclinic"
+                            image.push()
+                slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                        }
+                    }
                 }
             }
-	    }
+        }
+        // stage('build') {
+        //     steps {
+        //         dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
+        //         docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
+        //             dockerImage.push()
+        //         }
+        //     }
+	    // }
         // stage("Push") {
         //     steps {
         //         withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "DOCKER_HUB_USER", passwordVariable: "DOCKER_HUB_PASSWORD")]) {
