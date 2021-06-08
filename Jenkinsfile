@@ -51,7 +51,7 @@ pipeline {
         // }
         stage('build') {
             steps {
-                 dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.');
+                dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
             }
 	    }
         // stage("Push") {
