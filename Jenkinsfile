@@ -36,6 +36,7 @@ pipeline {
                     recipientProviders: [upstreamDevelopers(), requestor()]
                 }
             }
+        }
         stage('Package application into a docker image') {
             steps {
                 sh(script: """
