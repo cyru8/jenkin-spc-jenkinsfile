@@ -52,6 +52,9 @@ pipeline {
         stage('build') {
             steps {
                 dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
+                docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
+                    dockerImage.push()
+                }
             }
 	    }
         // stage("Push") {
@@ -62,13 +65,13 @@ pipeline {
         //         }
         //     }
         // }
-        stage("Push") {
-            steps {
-                docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
-                    dockerImage.push();
-            // slackSend "Image built and shipped to docker registry - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
-                }
-            }
-        }
+        // stage("Push") {
+        //     steps {
+        //         docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
+        //             dockerImage.push();
+        //     // slackSend "Image built and shipped to docker registry - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+        //         }
+        //     }
+        // }
     }
 }
