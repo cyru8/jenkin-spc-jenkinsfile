@@ -55,7 +55,7 @@ pipeline {
                 dir("$WORKSPACE") {
                     script {
                         docker.withRegistry('', 'dockerhubcreds') {
-                            def image = docker.build('oadetiba/spring-petclinic:v$env.BUILD_NUMBER')
+                            def image = docker.build('oadetiba/spring-petclinic:2.3.1')
                             echo "Please proceed to push the images: spring-petclinic"
                             image.push()
                 slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
