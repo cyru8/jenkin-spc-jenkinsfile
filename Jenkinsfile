@@ -49,21 +49,21 @@ pipeline {
         //     }
             
         // }
-        stage('build'){
-            steps{
+        stage('build') {
+            steps {
                 dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.');
             }
 	    }
-        // stage("Push"){
-        //     steps{
+        // stage("Push") {
+        //     steps {
         //         withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "DOCKER_HUB_USER", passwordVariable: "DOCKER_HUB_PASSWORD")]) {
         //         sh "chmod +x ./ci/04-push.sh && ./ci/04-push.sh"
         //         slackSend "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"                    
         //         }
         //     }
         // }
-        stage ("Push") {
-            steps{
+        stage("Push") {
+            steps {
                 docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
                     dockerImage.push();
             // slackSend "Image built and shipped to docker registry - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
