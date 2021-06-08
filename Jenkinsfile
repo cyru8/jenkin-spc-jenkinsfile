@@ -43,8 +43,8 @@ pipeline {
                 docker build -t oadetiba/spring-petclinic:2.3.1 .
                 docker images
                 """)
-                }
             }
+            
         }
     }
 }
