@@ -1,7 +1,7 @@
 pipeline {
     // agent any
     agent {
-        label 'oadetiba/jenkinsdocker:1.0'
+        label 'docker'
     }
     // triggers { pollSCM('H/5 * * * *') }
     stages {
