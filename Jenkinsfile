@@ -38,10 +38,8 @@ pipeline {
             }
         stage('Package application into a docker image') {
             steps {
-                // sh(script: 'docker images')
                 sh(script: """
-                cd target/*.jar
-                docker build -t springpetclinic .
+                docker build -t oadetiba/spring-petclinic:2.3.1 .
                 docker images
                 """)
                 }
