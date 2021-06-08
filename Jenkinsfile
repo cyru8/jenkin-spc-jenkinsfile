@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    // agent any
+    agent {
+        label 'agent-mavencore'
+    }
     // triggers { pollSCM('H/5 * * * *') }
     stages {
         stage('Verify Branch') {
