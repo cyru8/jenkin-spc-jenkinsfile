@@ -1,7 +1,7 @@
 pipeline {
     // agent any
     agent {
-        label 'agent-mavencore'
+        label 'oadetiba/jenkinsdocker:1.0'
     }
     // triggers { pollSCM('H/5 * * * *') }
     stages {
