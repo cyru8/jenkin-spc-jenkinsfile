@@ -9,3 +9,6 @@ WORKDIR /app
 COPY --from=clone app/jenkin-spc-jenkinsfile/target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar /app
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar"]
+
+# Run interactively with the command below from cli
+# docker run -ti -p 8080:8080 oadetiba/spring-petclinic:2.3.1
