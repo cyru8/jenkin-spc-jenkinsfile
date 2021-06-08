@@ -1,0 +1,11 @@
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/owner/PetControllerTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/system/CrashControllerTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/owner/OwnerControllerTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/vet/VetTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/PetclinicIntegrationTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/owner/VisitControllerTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/vet/VetControllerTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java
+/home/oadetiba/workbench/jenkinsworkbench/jenkins-spc-jenkinsfile/src/test/java/org/springframework/samples/petclinic/service/EntityUtils.java

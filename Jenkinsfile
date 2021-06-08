@@ -25,6 +25,7 @@ pipeline {
                 always {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
+                    sh 'echo "JUnit Test Completed."'
                 }
                 changed {
                     emailext subject: "Job \'${JOB_NAME}\' (${BUILD_NUMBER}) ${currentBuild.result}",
@@ -33,6 +34,16 @@ pipeline {
                     body: "Please go to ${BUILD_URL} and verify the build",
                     to: 'test@jenkins',
                     recipientProviders: [upstreamDevelopers(), requestor()]
+                }
+            }
+        stage('Package application into a docker image') {
+            steps {
+                // sh(script: 'docker images')
+                sh(script: """
+                cd target/*.jar
+                docker build -t springpetclinic .
+                docker images
+                """)
                 }
             }
         }
