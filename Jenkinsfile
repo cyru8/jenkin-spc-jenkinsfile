@@ -40,15 +40,15 @@ pipeline {
                 }
             }
         }
-        stage('Package application into a docker image') {
-            steps {
-                sh(script: """
-                docker build -t oadetiba/spring-petclinic:2.3.1 .
-                docker images
-                """)
-            }
+        // stage('Package application into a docker image') {
+        //     steps {
+        //         sh(script: """
+        //         docker build -t oadetiba/spring-petclinic:2.3.1 .
+        //         docker images
+        //         """)
+        //     }
             
-        }
+        // }
         stage("Push Image") {
             steps {
                 echo "Workspace is $WORKSPACE"
