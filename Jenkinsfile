@@ -66,7 +66,7 @@ pipeline {
         }
         stage('Send Slack Notification') {
             steps {
-                slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                sh 'slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"'
             }
 	    }
         // stage('build') {
