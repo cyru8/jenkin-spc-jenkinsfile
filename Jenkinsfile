@@ -34,7 +34,7 @@ pipeline {
                     emailext subject: "Job \'${JOB_NAME}\' (${BUILD_NUMBER}) ${currentBuild.result}",
                     attachLog: true,
                     compressLog: true,
-                    body: "Please go to ${BUILD_URL} and verify the build",
+                    body: "JUnit test ran successfully, please go to ${BUILD_URL} and verify the build",
                     to: 'test@jenkins',
                     recipientProviders: [upstreamDevelopers(), requestor()]
                 }
@@ -58,7 +58,7 @@ pipeline {
                             def image = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER')
                             echo "Please proceed to push the images: spring-petclinic"
                             image.push()
-                        slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
                         }
                     }
                 }
