@@ -64,11 +64,6 @@ pipeline {
                 }
             }
         }
-        // stage('Send Slack Notification') {
-        //     steps {
-        //         sh 'slackSend message: "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"'
-        //     }
-	    // }
         // stage('build') {
         //     steps {
         //         dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
@@ -77,21 +72,5 @@ pipeline {
         //         }
         //     }
 	    // }
-        // stage("Push") {
-        //     steps {
-        //         withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "DOCKER_HUB_USER", passwordVariable: "DOCKER_HUB_PASSWORD")]) {
-        //         sh "chmod +x ./ci/04-push.sh && ./ci/04-push.sh"
-        //         slackSend message: "Build Completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"                    
-        //         }
-        //     }
-        // }
-        // stage("Push") {
-        //     steps {
-        //         docker.withRegistry('https://index.docker.io/v1/', 'dockerhubcreds') {
-        //             dockerImage.push();
-        //     // slackSend message: "Image built and shipped to docker registry - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
-        //         }
-        //     }
-        // }
     }
 }
