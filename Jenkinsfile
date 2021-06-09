@@ -58,12 +58,17 @@ pipeline {
                             def image = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER')
                             echo "Please proceed to push the images: spring-petclinic"
                             image.push()
-                slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+                // slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
                         }
                     }
                 }
             }
         }
+        stage('Send Slack Notification') {
+            steps {
+                slackSend "spring-petclinic image built and pushed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL} | Link>)"
+            }
+	    }
         // stage('build') {
         //     steps {
         //         dockerImage = docker.build('oadetiba/spring-petclinic:v$BUILD_NUMBER', '.')
