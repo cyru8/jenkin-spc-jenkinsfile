@@ -89,7 +89,7 @@ pipeline {
         //         }
         //     }
 	    // }
-        stage('Remove Unused docker image') {
+        stage('Remove docker image once pushed to docker registry') {
             steps{
                 sh "docker rmi $registry:v$BUILD_NUMBER"
                 // sh 'docker images -a | grep "years" | awk "{print $3}" | xargs docker rmi --force'
