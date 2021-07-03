@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+    registry = "oadetiba/spring-petclinic"
+    registryCredential = 'dockerhubcreds'
+    dockerImage = ''
+    }
     // agent any
     agent {
         label 'docker'
@@ -86,7 +91,8 @@ pipeline {
 	    // // }
         stage('Remove Unused docker image') {
             steps{
-                sh 'docker images -a | grep ".*" | awk "{print $3}" | xargs docker rmi --force'
+                sh "docker rmi $registry:$BUILD_NUMBER"
+                // sh 'docker images -a | grep ".*" | awk "{print $3}" | xargs docker rmi --force'
             }
         }
     }
