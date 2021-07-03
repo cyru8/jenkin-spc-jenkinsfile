@@ -86,7 +86,7 @@ pipeline {
 	    // }
         stage('Remove Unused docker image') {
             steps{
-                sh "docker images -a | grep ".*" | awk '{print $3}' | xargs docker rmi --force"
+                sh "docker images -a | grep '.*' | awk '{print $3}' | xargs docker rmi --force"
             }
         }
     }
