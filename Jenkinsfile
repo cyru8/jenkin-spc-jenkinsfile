@@ -3,6 +3,18 @@ pipeline {
     agent {
         label 'docker'
     }
+    triggers {
+       // poll repo every 2 minute for changes
+       pollSCM('*/2 * * * *')
+    }
+    options {
+       // add timestamps to output
+       timestamps()
+       overrideIndexTriggers(false)
+       buildDiscarder(logRotator(numToKeepStr: '10'))
+       skipStagesAfterUnstable()
+       durabilityHint('PERFORMANCE_OPTIMIZED')
+    }
     // triggers { pollSCM('H/5 * * * *') }
     stages {
         stage('Verify Branch') {
