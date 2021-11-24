@@ -10,7 +10,7 @@ pipeline {
     }
     triggers {
        // poll repo every minute for changes
-       pollSCM('* * * * *')
+       //pollSCM('* * * * *')
     }
     options {
        // add timestamps to output
@@ -64,7 +64,7 @@ pipeline {
         //         docker images
         //         """)
         //     }
-            
+
         // }
         stage("Build image with the Spring Pet Clinic App and Push the Image to Docker Registry") {
             steps {
