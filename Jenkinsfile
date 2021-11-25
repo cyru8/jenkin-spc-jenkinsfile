@@ -4,14 +4,14 @@ pipeline {
     registryCredential = 'dockerhubcreds'
     dockerImage = ''
     }
-    // agent any
-    agent {
-        label 'docker'
-    }
-    triggers {
+    agent any
+    //agent {
+        //label 'docker'
+    //}
+    //triggers {
        // poll repo every minute for changes
        //pollSCM('* * * * *')
-    }
+    //}
     options {
        // add timestamps to output
        timestamps()
